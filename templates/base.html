@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="{{ DEFAULT_LANG }}" itemscope itemtype="http://schema.org/Person">
+<head>
+  {% block head %}
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title>{% block title %} {{ SITENAME }} | {{ SIDEBAR_DIGEST }} {% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ AUTHOR_DESCRIPTION }}">
+  <meta name="author" content="{{ AUTHOR }}">
+
+  <link rel="shortcut icon" href="{{ FAVICON }}">
+
+  <!-- schema.org -->
+  <meta itemprop="name" content="{{ SITENAME }}">
+  <meta itemprop="image" content="{{ AVATAR}}">
+  <meta itemprop="description" content="{{ AUTHOR_DESCRIPTION }}">
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments.css" type="text/css" />
+
+{% endblock %}
+
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <aside>
+    <!--<center><a href="{{ SITEURL }}"><img id="avatar" src="{{ AVATAR }}"></a></center>-->
+    <h1>{{ SITENAME }}</h1>
+    {% if SIDEBAR_DIGEST %}
+      <p>{{ SIDEBAR_DIGEST }}</p>
+    {% endif %}
+    <br>
+
+    <nav class="nav">
+      <ul class="list-bare">
+      
+        {% for title, link in MENUITEMS %}
+          <li><a class="nav__link" href="{{ link }}">{{ title }}</a></li>
+        {% endfor %}
+         
+        {% if DISPLAY_PAGES_ON_MENU and pages %}{% for p in pages %}
+          <li><a class="nav__link" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+        {% endfor %}{% endif %}
+    
+        {% if DISPLAY_CATEGORIES_ON_MENU -%}{% for cat, null in categories %}
+            <li{% if cat == category %} class="nav__link"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+        {% endfor %}{% endif %}
+
+      </ul>
+    </nav>
+
+  </aside>
+
+  <!-- Content -->
+  <article>
+    {% block content %}
+    {% endblock %}
+  </article>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      Blog creado con  <a href="http://getpelican.com/">Pelican</a>,
+      que utiliza <a href="http://python.org">Python</a>.
+      Theme <a href="https://github.com/">Simplex</a> by <a href="https://github.com/">rumbo181</a>.
+    </p>
+  </footer>
+
+
+</body>
+</html>
