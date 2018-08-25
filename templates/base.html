@@ -9,6 +9,14 @@
   <meta name="description" content="{{ AUTHOR_DESCRIPTION }}">
   <meta name="author" content="{{ AUTHOR }}">
 
+  <!-- Generador de metas -->
+  {% if META %}
+      {% for meta_content in META %}
+      <meta name="description" content="{{ meta_content}}">
+      {% endfor %}
+  {% endif %}
+
+
   <link rel="shortcut icon" href="{{ FAVICON }}">
 
   <!-- schema.org -->
