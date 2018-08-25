@@ -25,6 +25,13 @@ h1, h2 {
   font-weight: 600;
 }
 
+.pie_de_pagina {
+  background: rgba(192, 163, 165, 0.8);
+  color: white;
+
+}
+
+
 .latest
 {-
   padding: 10px 10px;
