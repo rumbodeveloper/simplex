@@ -45,18 +45,22 @@
 
     <nav class="nav">
       <ul class="list-bare">
-      
+
+
         {% for title, link in MENUITEMS %}
           <li><a class="nav__link" href="{{ link }}">{{ title }}</a></li>
         {% endfor %}
          
         {% if DISPLAY_PAGES_ON_MENU and pages %}{% for p in pages %}
           <li><a class="nav__link" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-        {% endfor %}{% endif %}
-    
-        {% if DISPLAY_CATEGORIES_ON_MENU -%}{% for cat, null in categories %}
+        {% endfor %}
+        {% endif %}
+
+          {% if DISPLAY_CATEGORIES_ON_MENU -%}{% for cat, null in categories %}
             <li{% if cat == category %} class="nav__link"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
         {% endfor %}{% endif %}
+
+
 
       </ul>
     </nav>
